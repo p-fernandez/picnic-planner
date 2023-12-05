@@ -8,6 +8,7 @@ export class Picnic {
   @Prop({ required: true })
   name: string;
 
+  // TODO: [SHORTCUT] Missing User document to relate to picnics
   @Prop({ required: true })
   _userId: string;
 

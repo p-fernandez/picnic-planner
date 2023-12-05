@@ -14,7 +14,7 @@ import { CreatePicnicDto } from './dto';
 import { Picnic } from './schemas';
 import { CreatePicnicResponseDto, PicnicDto } from './dto';
 
-// TODO: Missing request validations
+// TODO: [SHORTCUT] Missing request validations
 
 @Controller('picnics')
 export class PicnicsController {
@@ -50,6 +50,7 @@ export class PicnicsController {
   @Delete(':id')
   @HttpCode(204)
   async delete(@Param('id') id: string) {
+    // TODO: [SHORTCUT] Implement an use case that gatheres the search of a picnic so it can be reused
     const picnic = await this.picnicsService.findOne(id);
 
     if (!picnic) {

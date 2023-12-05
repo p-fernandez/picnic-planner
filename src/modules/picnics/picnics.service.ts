@@ -1,3 +1,4 @@
+import * as mongoose from 'mongoose';
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -22,7 +23,9 @@ export class PicnicsService {
   }
 
   async findOne(id: string): Promise<PicnicDto> {
-    const entity = await this.picnicModel.findOne({ _id: id }).exec();
+    const entity = await this.picnicModel
+      .findOne({ _id: this.convertToObjectId(id) })
+      .exec();
 
     if (!entity) {
       return undefined;
@@ -33,13 +36,18 @@ export class PicnicsService {
 
   async delete(id: string) {
     const deletedPicnic = await this.picnicModel
-      .findByIdAndDelete({ _id: id })
+      .findByIdAndDelete({ _id: this.convertToObjectId(id) })
       .exec();
     return deletedPicnic;
   }
 
+  // TODO: [SHORTCUT] Because lack of validations if using non proper ObjectIds will throw an error. This still doesn't solve it.
+  convertToObjectId(id: string) {
+    return new mongoose.Types.ObjectId(id);
+  }
+
   mapSchemaEntityToDto(picnic: PicnicDocument): PicnicDto {
-    // TODO: Remove __v in Schema configuration
+    // TODO: [SHORTCUT] Remove __v in Schema configuration
     const { _id, _userId, __v, name, location, date, activities } = picnic;
 
     return {
