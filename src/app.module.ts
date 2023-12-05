@@ -1,16 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { DatabaseModule } from './modules/database';
+import { PicnicsModule } from './modules/picnics';
 
 @Module({
-  imports: [
-    MongooseModule.forRootAsync({
-      useFactory: () => ({ uri: process.env.MONGO_DB_URL }),
-    }),
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [DatabaseModule, PicnicsModule],
 })
 export class AppModule {}

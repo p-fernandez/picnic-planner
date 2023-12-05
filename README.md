@@ -72,3 +72,14 @@ pnpm build
 ```zsh
 pnpm start:dev
 ```
+
+## Running tests
+
+There has been an implementation of E2E tests using Supertest and Jest.
+
+To run them locally execute:
+```zsh
+pnpm test:e2e
+```
+
+For the tests is mandatory that the MongoDB instance is running. But the tests will be executed in a different database than when running the project locally so no records should be lost.
