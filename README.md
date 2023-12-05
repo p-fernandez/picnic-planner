@@ -83,3 +83,8 @@ pnpm test:e2e
 ```
 
 For the tests is mandatory that the MongoDB instance is running. But the tests will be executed in a different database than when running the project locally so no records should be lost.
+
+## References
+
+This application server is based on the opinionated suggestions of Nest.js developers for the goal of providing a piece of functionality for this exercise.
+Real case scenario would lead me to different choices in regards of tooling, libraries, testing tools and coding style.
