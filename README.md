@@ -1,5 +1,15 @@
 # picnic-planner
 
+## Requeriments
+
+This project needs to be run alongside a MongoDB instance.
+If you don't want to run or launch your own MongoDB instance it is included a script to use [`docker-compose`](https://docs.docker.com/engine/reference/commandline/compose_up/) to download and build a Docker instance of MongoDB. But before hand you would need to install in your machine [`docker-compose`](https://docs.docker.com/compose/install/).
+
+You simply need to execute:
+```zsh
+pnpm local:start:mongo-db
+```
+
 ## Run locally
 
 These instructions refer to use `pnpm` as the package manager but other options can be used.
